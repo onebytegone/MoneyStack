@@ -1,0 +1,2 @@
+(function(){var root=this,MoneyStack=function(){};"undefined"!=typeof exports?("undefined"!=typeof module&&module.exports&&(exports=module.exports=MoneyStack),exports.MoneyStack=MoneyStack):root.MoneyStack=MoneyStack}).call(this);
+//# sourceMappingURL=moneystack-min.map
