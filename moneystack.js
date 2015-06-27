@@ -10,7 +10,23 @@
 
    var MoneyStack = function() {
 
+
+   MoneyStack.prototype.__upscaleValue = function(value, precision) {
+      var adjusted = value * this.__determineScale(precision);
+      return Number(adjusted.toFixed(0));
    };
+
+
+   MoneyStack.prototype.__downscaleValue = function(value, precision) {
+      var adjusted = value / this.__determineScale(precision);
+      return Number(adjusted.toFixed(precision));
+   };
+
+
+   MoneyStack.prototype.__determineScale = function(precision) {
+      return Math.pow(10, precision);
+   };
+
 
    // Allow support for browserify
    if (typeof exports !== 'undefined') {
