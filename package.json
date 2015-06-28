@@ -9,6 +9,14 @@
   },
   "author": "Ethan Smith",
   "license": "MIT",
+  "homepage": "https://github.com/onebytegone/MoneyStack",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onebytegone/MoneyStack"
+  },
+  "bugs": {
+    "url": "https://github.com/onebytegone/MoneyStack/issues"
+  },
   "devDependencies": {
     "expect.js": "^0.3.1",
     "mocha": "^2.2.5",
