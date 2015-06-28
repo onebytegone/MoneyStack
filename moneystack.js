@@ -5,10 +5,44 @@
  * Copyright (c) 2015 Ethan Smith
  */
 
+var sprintf = require("underscore.string/sprintf");
+
 (function() {
    var root = this;
 
    var MoneyStack = function() {
+      this.config = {
+         /**
+          * Sets the number of decimal places to ensure
+          */
+         'precision': 2,
+
+         /**
+          * Used to control the readble format.
+          *
+          * NOTE: if the precision here doesn't match `precision`,
+          * there may be rounding.
+          */
+         'currencyFormat': '$%.2f'
+      };
+
+      // Set initial stored value
+      this.stored = 0;
+   };
+
+   MoneyStack.prototype.set = function(value) {
+      this.stored = this.__upscaleValue(value, this.config.precision);
+   };
+
+
+   MoneyStack.prototype.get = function(value) {
+      return this.__downscaleValue(this.stored, this.config.precision);
+   };
+
+
+   MoneyStack.prototype.readable = function() {
+      return sprintf(this.config.currencyFormat, this.get());
+   };
 
 
    MoneyStack.prototype.__upscaleValue = function(value, precision) {
