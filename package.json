@@ -5,7 +5,9 @@
   "description": "A library to help with currency math",
   "main": "moneystack.js",
   "scripts": {
+    "lint": "jshint moneystack.js",
     "test": "mocha ./tests/*",
+    "prebuild": "npm run lint && npm run test",
     "build": "uglifyjs moneystack.js -c --source-map moneystack-min.map -o moneystack-min.js"
   },
   "author": "Ethan Smith",
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
+    "jshint": "^2.8.0",
     "mocha": "^2.2.5",
     "uglify-js": "^2.4.23"
   },
