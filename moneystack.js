@@ -10,7 +10,7 @@ var sprintf = require("underscore.string/sprintf");
 (function() {
    var root = this;
 
-   var MoneyStack = function() {
+   var MoneyStack = function(initial) {
       this.config = {
          /**
           * Sets the number of decimal places to ensure
@@ -28,6 +28,9 @@ var sprintf = require("underscore.string/sprintf");
 
       // Set initial stored value
       this.stored = 0;
+      if (initial) {
+         this.set(initial);
+      }
    };
 
 

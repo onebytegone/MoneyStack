@@ -2,6 +2,20 @@ var expect = require("expect.js"),
     MoneyStack = require('../moneystack');
 
 describe('Value Store/Retrieve', function() {
+   it('should store the initially given value', function() {
+      expect(new MoneyStack(0).get()).to.be(0);
+      expect(new MoneyStack(10).get()).to.be(10);
+      expect(new MoneyStack(10.9).get()).to.be(10.9);
+      expect(new MoneyStack(10.99).get()).to.be(10.99);
+      expect(new MoneyStack(10.999).get()).to.be(10.99);
+      expect(new MoneyStack(10.000001).get()).to.be(10);
+   });
+   it('should default to zero for false initial value', function() {
+      expect(new MoneyStack(0).get()).to.be(0);
+      expect(new MoneyStack(false).get()).to.be(0);
+      expect(new MoneyStack().get()).to.be(0);
+      expect(new MoneyStack(null).get()).to.be(0);
+   });
    it('should store and return the same value', function() {
       var value = new MoneyStack();
       value.set(0);
