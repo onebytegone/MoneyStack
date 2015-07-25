@@ -5,7 +5,8 @@
  * Copyright (c) 2015 Ethan Smith
  */
 
-var sprintf = require("underscore.string/sprintf");
+var sprintf = require("underscore.string/sprintf"),
+    _ = require("underscore");
 
 (function() {
    var root = this;
@@ -62,6 +63,57 @@ var sprintf = require("underscore.string/sprintf");
    MoneyStack.prototype.readable = function() {
       return sprintf(this.config.currencyFormat, this.get());
    };
+
+   /**************************
+    * MATH
+    **************************/
+
+
+   /**
+    * Adds another MoneyStack. Creates a new MoneyStack.
+    *
+    * @return MoneyStack - The resulting value
+    */
+   MoneyStack.prototype.plus = function(otherStack) {
+      if (!_.isEqual(this.config, otherStack.config)) {
+         throw {
+            name: 'Mismatched config',
+            message: 'The configs do not match'
+         }
+      }
+
+      var newStack = new MoneyStack();
+      newStack.stored = this.stored + otherStack.stored;
+      newStack.config = this.config;
+
+      return newStack;
+   };
+
+
+   /**
+    * Subtracts another MoneyStack. Creates a new MoneyStack.
+    *
+    * @return MoneyStack - The resulting value
+    */
+   MoneyStack.prototype.subtract = function(otherStack) {
+      if (!_.isEqual(this.config, otherStack.config)) {
+         throw {
+            name: 'Mismatched config',
+            message: 'The configs do not match'
+         }
+      }
+
+      var newStack = new MoneyStack();
+      newStack.stored = this.stored - otherStack.stored;
+      newStack.config = this.config;
+
+      return newStack;
+   };
+
+
+   /**************************
+    * INTERNAL
+    **************************/
 
 
    /**
