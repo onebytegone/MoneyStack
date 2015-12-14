@@ -4,20 +4,31 @@ This is a library to assist with currency related math. It helps with some of th
 
 _This is a prealpha state and should be considered unstable. Use with extreme caution._
 
+## Usage
 
-## Install Dependencies
+```
+cd {your-project}
+npm install git://github.com/onebytegone/MoneyStack.git#0.0.1 --save
+```
+
+## Development
+
+### Install Dependencies
+
 ```
 npm install
 ```
 
 
-## Create minified version
+### Create minified version
+
 ```
 npm run build
 ```
 
 
-## Run unit tests
+### Run unit tests
+
 ```
 npm run test
 ```
