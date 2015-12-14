@@ -10,6 +10,14 @@ describe('Value Store/Retrieve', function() {
       expect(new MoneyStack(10.999).get()).to.be(10.99);
       expect(new MoneyStack(10.000001).get()).to.be(10);
    });
+   it('should convert and store a given string', function() {
+      expect(new MoneyStack("0").get()).to.be(0);
+      expect(new MoneyStack("10").get()).to.be(10);
+      expect(new MoneyStack("10.9").get()).to.be(10.9);
+      expect(new MoneyStack("$10.9").get()).to.be(10.9);
+      expect(new MoneyStack("10.99").get()).to.be(10.99);
+      expect(new MoneyStack("$10.99").get()).to.be(10.99);
+   });
    it('should default to zero for false initial value', function() {
       expect(new MoneyStack(0).get()).to.be(0);
       expect(new MoneyStack(false).get()).to.be(0);
@@ -38,6 +46,29 @@ describe('Value Store/Retrieve', function() {
 
       value.set(10.9999);
       expect(value.get()).to.be(10.99);
+   });
+   it('should store and return even if given a string', function() {
+      var value = new MoneyStack();
+      value.set("0");
+      expect(value.get()).to.be(0);
+
+      value.set("10");
+      expect(value.get()).to.be(10);
+
+      value.set("20.32");
+      expect(value.get()).to.be(20.32);
+
+      value.set("20.3200000001");
+      expect(value.get()).to.be(20.32);
+
+      value.set("$20.3200000001");
+      expect(value.get()).to.be(20.32);
+
+      value.set("20.00000001");
+      expect(value.get()).to.be(20);
+
+      value.set("$20.00000001");
+      expect(value.get()).to.be(20);
    });
    it('should be able to return formatted value', function() {
       var value = new MoneyStack();

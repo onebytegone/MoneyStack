@@ -38,9 +38,14 @@ var sprintf = require("underscore.string/sprintf"),
    /**
     * Stores the given value.
     *
-    * @param value Number - The value to store
+    * @param value Number|String - The value to store
     */
    MoneyStack.prototype.set = function(value) {
+      if (typeof value === 'string') {
+         value = value.replace(/[^\d.]/g,'');
+         value = parseFloat(value);
+      }
+
       this.stored = this.__upscaleValue(value, this.config.precision);
    };
 
