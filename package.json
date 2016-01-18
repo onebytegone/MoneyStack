@@ -1,7 +1,7 @@
 {
   "name": "moneystack",
   "title": "MoneyStack",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A library to help with currency math",
   "main": "moneystack.js",
   "scripts": {
