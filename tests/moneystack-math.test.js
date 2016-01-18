@@ -31,4 +31,18 @@ describe('Math', function() {
       expect(new MoneyStack(10.000001).subtract(new MoneyStack(3.0005)).get()).to.be(7);
       expect(new MoneyStack(10.000001).subtract(new MoneyStack(0.085)).get()).to.be(9.92);
    });
+   it('should handle null math', function() {
+      expect(new MoneyStack(0).plus(null).get()).to.be(0);
+      expect(new MoneyStack(0).subtract(null).get()).to.be(0);
+
+      expect(new MoneyStack(10).plus(null).get()).to.be(10);
+      expect(new MoneyStack(10).subtract(null).get()).to.be(10);
+   });
+   it('should handle NaN math', function() {
+      expect(new MoneyStack(0).plus(NaN).get()).to.be(0);
+      expect(new MoneyStack(0).subtract(NaN).get()).to.be(0);
+
+      expect(new MoneyStack(10).plus(NaN).get()).to.be(10);
+      expect(new MoneyStack(10).subtract(NaN).get()).to.be(10);
+   });
 });

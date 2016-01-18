@@ -80,6 +80,10 @@ var sprintf = require("underscore.string/sprintf"),
     * @return MoneyStack - The resulting value
     */
    MoneyStack.prototype.plus = function(otherStack) {
+      if (!otherStack) {
+         return this;
+      }
+
       if (!_.isEqual(this.config, otherStack.config)) {
          throw {
             name: 'Mismatched config',
@@ -101,6 +105,10 @@ var sprintf = require("underscore.string/sprintf"),
     * @return MoneyStack - The resulting value
     */
    MoneyStack.prototype.subtract = function(otherStack) {
+      if (!otherStack) {
+         return this;
+      }
+
       if (!_.isEqual(this.config, otherStack.config)) {
          throw {
             name: 'Mismatched config',
