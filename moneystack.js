@@ -88,7 +88,7 @@ var sprintf = require("underscore.string/sprintf"),
          throw {
             name: 'Mismatched config',
             message: 'The configs do not match'
-         }
+         };
       }
 
       var newStack = new MoneyStack();
@@ -113,7 +113,7 @@ var sprintf = require("underscore.string/sprintf"),
          throw {
             name: 'Mismatched config',
             message: 'The configs do not match'
-         }
+         };
       }
 
       var newStack = new MoneyStack();
